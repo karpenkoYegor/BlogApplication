@@ -1,0 +1,38 @@
+﻿@model TagViewModel
+@section Scripts{
+    <script src="~\lib\jquery-validation\dist\jquery.validate.js"></script>
+    <script src="~\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js"></script>
+}
+<div class="col-md-6 offset-md-3">
+    <div class="card card-body bg-light">
+        @using (Html.BeginForm("Create", "Tag", FormMethod.Post))
+        {
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="TagName">Название тега</label>
+                <input asp-for="TagName" class="form-control">
+                <span asp-validation-for="TagName" class="text-warning"></span>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-envelope">Добавить тег</i></button>
+                <div class="text-success">@ViewBag.UserMessage</div>
+            </div>
+        }
+        @foreach (var tag in ViewBag.Tags)
+        {
+            <div class="row p-1">
+                <div class="col">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-1 d-flex flex-column align-items-center">
+                            <h5 class="mb-0">@tag.Name</h5>
+                            <div>
+                                <a asp-action="Delete" asp-controller="Tag" asp-route-id="@tag.TagId">Удалить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

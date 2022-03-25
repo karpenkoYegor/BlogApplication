@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Article>
+@{
+}
+<div>
+    <a asp-action="Create" asp-controller="Article">Добавить статью</a> |
+    <a asp-action="Create" asp-controller="Category">Добавить категорию</a> |
+    <a asp-action="Create" asp-controller="Tag">Добавить теги</a> |
+</div>
+@foreach (var article in Model)
+{
+    <div class="row p-3">
+            <div class="col">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-2 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary">@article.Category.Name</strong>
+                        <h6 class="mb-0">Id @article.Id: @article.Name</h6>
+                        <div>
+                            <a asp-action="Edit" asp-controller="Article" asp-route-id="@article.Id">Изменить</a> |
+                            <a asp-action="Delete" asp-controller="Article" asp-route-id="@article.Id">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}

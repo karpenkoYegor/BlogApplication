@@ -1,0 +1,26 @@
+[
+  {
+    "ArticleId": 1,
+    "TagId": 1
+  },
+  {
+    "ArticleId": 1,
+    "TagId": 2
+  },
+  {
+    "ArticleId": 2,
+    "TagId": 1
+  },
+  {
+    "ArticleId": 2,
+    "TagId": 3
+  },
+  {
+    "ArticleId": 3,
+    "TagId": 2
+  },
+  {
+    "ArticleId": 3,
+    "TagId": 3
+  }
+]

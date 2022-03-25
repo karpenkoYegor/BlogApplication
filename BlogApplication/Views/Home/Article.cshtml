@@ -1,0 +1,26 @@
+﻿@model Article
+@{
+    ViewData["Title"] = "Article";
+}
+
+<div class="row g-5">
+    <div class="col">
+        <h1>@Model.Name</h1>
+        <p class="text-start fs-5 lh-sm">@Model.Description</p>
+        @if (Model.HeroImage != "null")
+        {
+            <div class="align-content-center">
+                <img class="img-fluid" src="~/img/@Model.HeroImage"/>
+            </div>
+            
+        }
+        <p>@Model.Category.Name</p>
+        <div>
+            @foreach (var tag in Model.Tags)
+            {
+                <p class="d-inline">#@tag.Name</p>
+            }
+        </div>
+    </div>
+</div>
+

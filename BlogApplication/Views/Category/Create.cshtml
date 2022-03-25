@@ -1,0 +1,38 @@
+﻿@model CategoryViewModel
+@section Scripts{
+    <script src="~\lib\jquery-validation\dist\jquery.validate.js"></script>
+    <script src="~\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js"></script>
+}
+<div class="col-md-6 offset-md-3">
+    <div class="card card-body bg-light">
+        @using (Html.BeginForm("Create", "Category", FormMethod.Post))
+        {
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="Name">Название категории</label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="text-warning"></span>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-envelope">Добавить категорию</i></button>
+                <div class="text-success">@ViewBag.UserMessage</div>
+            </div>
+        }
+        @foreach (var category in ViewBag.Categories)
+        {
+            <div class="row p-3">
+                <div class="col">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column align-items-center">
+                            <h5 class="mb-0">@category.Name</h5>
+                            <div>
+                                <a asp-action="Edit" asp-controller="Category" asp-route-id="@category.Id">Изменить</a> |
+                                <a asp-action="Delete" asp-controller="Category" asp-route-id="@category.Id">Удалить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

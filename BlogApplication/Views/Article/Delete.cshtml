@@ -1,0 +1,17 @@
+﻿@model Article
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Вы действительно хотите удалить эту статью?</h3>
+
+    @using (Html.BeginForm("Delete", "Article", FormMethod.Post))
+    {
+        <div>
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Admin" asp-controller="Home">Back to list</a>
+        </div>
+    }
+</div>
